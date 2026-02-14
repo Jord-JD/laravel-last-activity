@@ -9,7 +9,7 @@ the following Composer command from the root of your
 project.
 
 ```bash
-composer require divineomega/laravel-last-activity
+composer require jord-jd/laravel-last-activity
 ```
 
 ## Setup
