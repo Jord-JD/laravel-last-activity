@@ -32,6 +32,6 @@
     }
   },
   "replace": {
-    "jord-jd/laravel-last-activity": "self.version"
+    "divineomega/laravel-last-activity": "self.version"
   }
 }
