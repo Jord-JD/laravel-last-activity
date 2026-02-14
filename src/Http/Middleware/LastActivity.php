@@ -1,6 +1,6 @@
 <?php
 
-namespace DivineOmega\LaravelLastActivity\Http\Middleware;
+namespace JordJD\LaravelLastActivity\Http\Middleware;
 
 use Closure;
 use Illuminate\Database\Eloquent\Model;

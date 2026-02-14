@@ -15,7 +15,7 @@
   },
   "autoload": {
     "psr-4": {
-      "DivineOmega\\LaravelLastActivity\\": "src/"
+      "JordJD\\LaravelLastActivity\\": "src/"
     }
   },
   "require-dev": {
@@ -24,7 +24,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "DivineOmega\\LaravelLastActivity\\ServiceProvider"
+        "JordJD\\LaravelLastActivity\\ServiceProvider"
       ]
     },
     "branch-alias": {

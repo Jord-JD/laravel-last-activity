@@ -23,12 +23,12 @@ activity for, as shown below.
 protected $middlewareGroups = [
         'web' => [
             /* ... other web middleware ... */
-            \DivineOmega\LaravelLastActivity\Http\Middleware\LastActivity::class
+            \JordJD\LaravelLastActivity\Http\Middleware\LastActivity::class
         ],
 
         'api' => [
             /* ... other api middleware ... */
-            \DivineOmega\LaravelLastActivity\Http\Middleware\LastActivity::class
+            \JordJD\LaravelLastActivity\Http\Middleware\LastActivity::class
         ],
     ];
 ```
@@ -37,7 +37,7 @@ You also need to add the config file and migration to your project.
 To do so, simply run the following Artisan command.
 
 ```bash
-php artisan vendor:publish --provider="DivineOmega\LaravelLastActivity\ServiceProvider"
+php artisan vendor:publish --provider="JordJD\LaravelLastActivity\ServiceProvider"
 ```
 
 You can then run the provided migration to add a `last_activity` field

@@ -1,6 +1,6 @@
 <?php
 
-namespace DivineOmega\LaravelLastActivity;
+namespace JordJD\LaravelLastActivity;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 
