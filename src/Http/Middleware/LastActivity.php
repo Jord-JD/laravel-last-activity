@@ -45,8 +45,15 @@ class LastActivity
         }
 
         $this->hideFromEvents($user, function() use ($user, $lastActivityField) {
-            $user->$lastActivityField = now();
-            $user->save();
+            $usesTimestamps = $user->timestamps;
+
+            try {
+                $user->timestamps = false;
+                $user->$lastActivityField = now();
+                $user->save();
+            } finally {
+                $user->timestamps = $usesTimestamps;
+            }
         });
     }
 
@@ -63,10 +70,10 @@ class LastActivity
         $dispatcher = $model::getEventDispatcher();
         $model::unsetEventDispatcher();
 
-        $result = $callback();
-
-        $model::setEventDispatcher($dispatcher);
-
-        return $result;
+        try {
+            return $callback();
+        } finally {
+            $model::setEventDispatcher($dispatcher);
+        }
     }
 }
