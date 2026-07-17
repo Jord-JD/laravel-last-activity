@@ -1,0 +1,35 @@
+name: Compatibility
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  composer:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '7.1'
+            laravel: '^5.6'
+            testbench: '^3.8'
+          - php: '8.0'
+            laravel: '^8.0'
+            testbench: '^6.0'
+          - php: '8.3'
+            laravel: '^13.0'
+            testbench: '^11.0'
+          - php: '8.5'
+            laravel: '^13.0'
+            testbench: '^11.0'
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+      - run: composer require --no-update "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}"
+      - run: composer update --prefer-dist --no-interaction
+      - run: find src -name '*.php' -print0 | xargs -0 -n1 php -l
