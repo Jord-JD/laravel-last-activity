@@ -14,15 +14,19 @@ jobs:
           - php: '7.1'
             laravel: '^5.6'
             testbench: '^3.8'
+            composer_options: ''
           - php: '8.0'
             laravel: '^8.0'
             testbench: '^6.0'
+            composer_options: '--no-blocking'
           - php: '8.3'
             laravel: '^13.0'
             testbench: '^11.0'
+            composer_options: ''
           - php: '8.5'
             laravel: '^13.0'
             testbench: '^11.0'
+            composer_options: ''
 
     steps:
       - uses: actions/checkout@v4
@@ -31,5 +35,5 @@ jobs:
           php-version: ${{ matrix.php }}
           coverage: none
       - run: composer require --no-update "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}"
-      - run: composer update --prefer-dist --no-interaction
+      - run: composer update --prefer-dist --no-interaction ${{ matrix.composer_options }}
       - run: find src -name '*.php' -print0 | xargs -0 -n1 php -l
